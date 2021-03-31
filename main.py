@@ -40,7 +40,7 @@ def msg_query():
                 delete_message()
 
             elif "+15592808913" in de_read:
-                send_message("5592808913", "Whats up sexy")
+                send_message("5592808913", "Whats up")
                 print("Sent message")
                 delete_message()
 
