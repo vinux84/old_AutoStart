@@ -14,7 +14,7 @@ GPIO.setup(18, GPIO.OUT) # initializing pin
 def msg_query():
     delete_message() # Delete message function is the last function on this file. 
     read_msg = "AT+CMGR=0\r" # Creating GSM command for GSM module, this command is for reading 
-    serial_connect.write(read_msg.encode()) # writing read_msg (the GSM command) to GSM module , then encoding for it to read right. 
+    serial_connect.write(read_msg.encode()) # writing read_msg (the GSM command) to GSM module , then encoding for it to read from sting to unicode char
     time.sleep(2)
     read = serial_connect.read(serial_connect.inWaiting()) # This will read the response from the GSM module, should return any new messages
     time.sleep(2)
