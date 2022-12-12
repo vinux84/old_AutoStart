@@ -1,4 +1,4 @@
-# from gsm5320 import GsmCommand
+# from gsm5320 import GsmCommand , this is from gsm5320.py class file. May not use yet
 import time
 import serial
 
@@ -6,19 +6,19 @@ serial_connect = serial.Serial(port="/dev/ttyUSB3", baudrate=115200, timeout=3)
 
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(18, GPIO.OUT)
+GPIO.setmode(GPIO.BCM) # Setting for BCM pin setting, rather then numbered pins
+GPIO.setwarnings(False) # No warnings
+GPIO.setup(18, GPIO.OUT) # initializing pin
 
 
 def msg_query():
-    delete_message()
-    read_msg = "AT+CMGR=0\r"
-    serial_connect.write(read_msg.encode())
+    delete_message() # Delete message function is the last function on this file. 
+    read_msg = "AT+CMGR=0\r" # Creating GSM command for GSM module, this command is for reading 
+    serial_connect.write(read_msg.encode()) # writing read_msg (the GSM command) to GSM module , then encoding for it to read right. 
     time.sleep(2)
-    read = serial_connect.read(serial_connect.inWaiting())
+    read = serial_connect.read(serial_connect.inWaiting()) # This will read the response from the GSM module, should return any new messages
     time.sleep(2)
-    read_m = read.decode()
+    read_m = read.decode() # decoding the message returned from GSM module. ex: this will check what messages have came in (from user)
 
     while True:
 
