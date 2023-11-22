@@ -36,9 +36,3 @@ class GsmCommand:
         read_m = read.decode()
         return read_m
 
-
-class Ignition:
-
-    pass
-
-
